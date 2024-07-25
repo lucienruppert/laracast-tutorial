@@ -17,6 +17,5 @@ $userId = $db->lastInsertId();
 $query = "SELECT * FROM users WHERE id = :id";
 $user = $db->queryDB($query, [':id' => $userId])->fetch();
 
-print_r($user); 
-
-
+$_SESSION['user'] = $user;
+header('location: /');

@@ -1,8 +1,6 @@
 <?php
 
 session_start();
-$_SESSION['name'] = 'Tami';
-$_SESSION['email'] = 'a@b.com';
 
 const BASE_PATH = __DIR__ . '/../';
 require BASE_PATH . 'Core/functions.php';

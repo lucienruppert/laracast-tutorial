@@ -1,19 +1,25 @@
 <?php
 
-function getStyleForSelected($uri)
+function getStyleForActive($uri)
 {
   return $_SERVER['REQUEST_URI'] === $uri ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white';
 }
 
-function test($value) {
+function dd($value)
+{
+  echo '<pre>';
   print_r($value);
+  echo '</pre>';
+  die();
 }
 
-function base_path($path) {
-   return BASE_PATH . $path;
+function base_path($path)
+{
+  return BASE_PATH . $path;
 }
 
-function view($path, $attributes = []) {
+function view($path, $attributes = [])
+{
   extract($attributes);
   require base_path("views/$path");
 }

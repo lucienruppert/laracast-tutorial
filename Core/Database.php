@@ -1,7 +1,9 @@
 <?php
 
 namespace Core;
+
 use PDO;
+
 class Database
 {
   public $connection;
@@ -20,9 +22,14 @@ class Database
     return $this;
   }
 
-   public function fetch()
+  public function fetchAll()
   {
     return $this->statement->fetchAll();
+  }
+
+  public function fetch()
+  {
+    return $this->statement->fetch();
   }
 
   public function lastInsertId()
