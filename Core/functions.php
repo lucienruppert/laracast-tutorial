@@ -8,7 +8,7 @@ function getStyleForActive($uri)
 function dd($value)
 {
   echo '<pre>';
-  print_r($value);
+  var_dump($value);
   echo '</pre>';
   die();
 }
@@ -22,4 +22,10 @@ function view($path, $attributes = [])
 {
   extract($attributes);
   require base_path("views/$path");
+}
+
+function authorize($condition, $status = Response::FORBIDDEN) {
+  if(!$condition) {
+    abort($status);
+  }
 }

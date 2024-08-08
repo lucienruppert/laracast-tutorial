@@ -7,7 +7,7 @@ use PDO;
 class Database
 {
   public $connection;
-  public $statement;
+  private $statement;
   public function __construct($config, $username = 'root', $password = '')
   {
     $dsn = 'mysql:' . http_build_query($config, '', ';');
@@ -22,14 +22,23 @@ class Database
     return $this;
   }
 
-  public function fetchAll()
+  public function get()
   {
     return $this->statement->fetchAll();
   }
 
-  public function fetch()
+  public function find()
   {
     return $this->statement->fetch();
+  }
+
+  public function findOrAbort()
+  {
+    $result = $this->statement->fetch();
+    if (!$result) {
+      abort();
+    }
+    return $result;
   }
 
   public function lastInsertId()

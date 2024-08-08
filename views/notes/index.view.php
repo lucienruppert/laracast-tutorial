@@ -9,10 +9,11 @@
       <?php
       if (isset($notes)) {
         foreach ($notes as $note) :
-          echo  "<li><a href='/note?id={$note['id']}' class='text-blue-500 hover:underline'>" . $note['body'] . '</a></li>';
+          echo  "<li><a href='/note?id={$note['id']}' class='text-blue-500 hover:underline'>" . htmlspecialchars($note['body']) . '</a></li>';
         endforeach;
       }
       ?>
+      <p class="mt-6"><a href='/notes/create' class='text-blue-500 hover:underline font-bold'>Add New</a></p>
     </div>
   </main>
 
