@@ -29,3 +29,9 @@ function authorize($condition, $status = Response::FORBIDDEN) {
     abort($status);
   }
 }
+
+function abort($code = Response::NOT_FOUND): void
+{
+  http_response_code($code);
+  view("$code.view.php");
+}
