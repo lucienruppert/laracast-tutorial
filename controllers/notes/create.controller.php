@@ -5,9 +5,9 @@ use Core\Validator;
 
 $config = require base_path('config.php');
 $db = new Database($config['database']);
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $errors = [];
 
   if (!Validator::checkString($_POST['body'], 1, 10)) {
     $errors['body'] = 'A note has to be between 1 and 10 characters.';
