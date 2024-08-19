@@ -12,7 +12,6 @@
             <a href="/notes" class="<?= getStyleForActive('/notes'); ?> rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Notes</a>
             <a href="/about" class="<?= getStyleForActive('/about'); ?> rounded-md px-3 py-2 text-sm font-medium" aria-current="page">About</a>
             <a href="/contact" class="<?= getStyleForActive('/contact'); ?> rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Contact</a>
-            <a href="/register" class="<?= getStyleForActive('/register'); ?> rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Registration</a>
           </div>
         </div>
       </div>
@@ -28,8 +27,8 @@
 
           <!-- Profile dropdown -->
           <div class="relative ml-3">
-            <div class="text-white">
-              <?= $_SESSION['user']['email'] ?? 'Guest' ?>
+            <div class="text-white"> 
+              <?= $_SESSION['user']['email'] ?? "<a href='/register' class='rounded-md px-3 py-2 text-sm font-medium" . getStyleForActive('/register') . "'>Registration</a>" ?>
             </div>
           </div>
         </div>
