@@ -30,7 +30,7 @@ $query = "select * from users where email = :email";
 $existingUser = $db->queryDB($query, [':email' => $email])->find();
 
 if ($existingUser) {
-  header('location: /');
+  header('location: /'); 
   exit();
 } else {
   $query = "insert into users (email, password) values (:email, :password)";
@@ -42,8 +42,6 @@ if ($existingUser) {
   $userId = $db->lastInsertId();
   $query = "SELECT * FROM users WHERE id = :id";
   $user = $db->queryDB($query, [':id' => $userId])->find();
+  login($user);
 
-  $_SESSION['user'] = $user;
-  header('location: /');
-  exit();
 }

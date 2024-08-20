@@ -35,3 +35,9 @@ function abort($code = Response::NOT_FOUND): void
   http_response_code($code);
   view("$code.view.php");
 }
+
+function login($user) {
+  $_SESSION['user'] = $user;
+  header('location: /');
+  exit();
+}

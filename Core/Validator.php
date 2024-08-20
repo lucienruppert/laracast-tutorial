@@ -5,7 +5,7 @@ namespace Core;
 class Validator
 {
 
-  public static function checkString(string $value, int $min = 1, int $max = INF)
+  public static function checkString(string $value, int $min = 1, int $max = 100)
   {
     $value = trim($value);
     

@@ -29,7 +29,9 @@
           <div class="relative ml-3">
             <div class="text-white">
               <?= $_SESSION['user']['email'] ?? "<a href='/register' class='rounded-md px-3 py-2 text-sm font-medium" . getStyleForActive('/register') . "'>Registration</a>" ?>
+              <?php if (empty($_SESSION['user'])) { ?>
               <?= "<a href='/login' class='rounded-md px-3 py-2 text-sm font-medium" . getStyleForActive('/login') . "'>Login</a>" ?>
+              <?php } ?>
             </div>
           </div>
         </div>
