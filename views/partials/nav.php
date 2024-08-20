@@ -28,10 +28,14 @@
           <!-- Profile dropdown -->
           <div class="relative ml-3">
             <div class="text-white">
-              <?= $_SESSION['user']['email'] ?? "<a href='/register' class='rounded-md px-3 py-2 text-sm font-medium" . getStyleForActive('/register') . "'>Registration</a>" ?>
               <?php if (empty($_SESSION['user'])) { ?>
-              <?= "<a href='/login' class='rounded-md px-3 py-2 text-sm font-medium" . getStyleForActive('/login') . "'>Login</a>" ?>
-              <?php } ?>
+                <a href='/register' class='rounded-md px-3 py-2 text-sm font-medium" . <?= getStyleForActive('/register') ?>'>Registration</a>
+                <a href='/login' class='rounded-md px-3 py-2 text-sm font-medium" . <?= getStyleForActive('/login') ?>'>Login</a>
+              <?php } else { ?>
+                <form action='/logout' method="post">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class='rounded-md px-3 py-2 text-sm font-medium" . <?= getStyleForActive('/logout') ?>'>Logout</button>
+                <?php } ?>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ if (!Validator::checkString($password)) {
 }
 
 if (!empty($errors)) {
-  view('sessions/create.view.php', [
+  view('session/create.view.php', [
     'errors' => $errors
   ]);
   die();
@@ -33,7 +33,7 @@ if ($user && password_verify($password, $user['password'])) {
     login($user);
   }
 
-view('sessions/create.view.php', [
+view('session/create.view.php', [
   'errors' => [
     'password' => 'No user found with that email and password.'
   ]
