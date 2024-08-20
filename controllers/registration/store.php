@@ -36,7 +36,7 @@ if ($existingUser) {
   $query = "insert into users (email, password) values (:email, :password)";
   $db->queryDB($query, [
     ':email' => $email,
-    ':password' => $password
+    ':password' => password_hash($password, PASSWORD_BCRYPT)
   ]);
 
   $userId = $db->lastInsertId();
