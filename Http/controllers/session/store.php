@@ -8,14 +8,12 @@ $password = $_POST['password'];
 
 $form = new LoginForm();
 
-if ($form->validate($email, $password)) { 
-  $auth = new Authenticator();
+if ($form->validate($email, $password)) {
 
-  if ($auth->attempt($email, $password)) {
+  if ((new Authenticator())->attempt($email, $password))
     redirect('/');
-  } else {
-    $form->error('email', 'No mathinc account found with that email and password.');
-  }
+
+  $form->error('email', 'No mathinc account found with that email and password.');
 }
 
 view('session/create.view.php', [
