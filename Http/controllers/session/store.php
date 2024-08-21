@@ -7,20 +7,17 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 $form = new LoginForm();
-if (!$form->validate($email, $password)) {
-  view('session/create.view.php', [
-    'errors' => $form->errors()
-  ]); 
+
+if ($form->validate($email, $password)) { 
+  $auth = new Authenticator();
+
+  if ($auth->attempt($email, $password)) {
+    redirect('/');
+  } else {
+    $form->error('email', 'No mathinc account found with that email and password.');
+  }
 }
 
-$auth = new Authenticator();
-if($auth->attempt($email, $password)) {
-  redirect('/');
-} else {
-  view('session/create.view.php', [
-    'errors' => [ 
-      'password' => 'No user found with that email and password.'
-    ]
-  ]);
-}
-
+view('session/create.view.php', [
+  'errors' => $form->errors(),
+]);

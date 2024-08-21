@@ -1,6 +1,7 @@
 <?php
 
 use Core\App;
+use Core\Authenticator;
 use Core\Database;
 use Core\Validator;
 
@@ -41,6 +42,7 @@ if ($existingUser) {
   $userId = $db->lastInsertId();
   $query = "SELECT * FROM users WHERE id = :id";
   $user = $db->queryDB($query, [':id' => $userId])->find();
-  login($user);
+  $auth = new Authenticator();
+  $auth->login($user);
 
 }
