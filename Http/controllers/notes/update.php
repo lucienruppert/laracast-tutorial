@@ -31,6 +31,5 @@ if (!empty($errors)) {
 $query = "update notes set body = :body where id = :id";
 $note = $db->queryDB($query, [':id' => $_POST['id'],':body' => $_POST['body']]);
 
-header('location: /notes');
-exit();
+redirect('/notes');
 

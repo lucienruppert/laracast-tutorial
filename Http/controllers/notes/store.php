@@ -25,5 +25,4 @@ $db->queryDB('INSERT INTO notes (user_id, body) VALUES (:user_id, :body)', [
   ':body' => $_POST['body'],
 ]);
 
-header('location: /notes');
-die();
+redirect('/notes');

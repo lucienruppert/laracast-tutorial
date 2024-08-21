@@ -36,3 +36,8 @@ function abort($code = Response::NOT_FOUND): void
   http_response_code($code);
   view("$code.view.php");
 }
+
+function redirect($url): void {
+  header("location: $url");
+  exit();
+}

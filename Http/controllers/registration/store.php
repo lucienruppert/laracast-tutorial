@@ -30,8 +30,7 @@ $query = "select * from users where email = :email";
 $existingUser = $db->queryDB($query, [':email' => $email])->find();
 
 if ($existingUser) {
-  header('location: /'); 
-  exit();
+  redirect('/');
 } else {
   $query = "insert into users (email, password) values (:email, :password)";
   $db->queryDB($query, [
